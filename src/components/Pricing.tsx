@@ -1,9 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 
-const Pricing = ({ data }) => (
+interface PricingProps {
+  data: Plan[];
+}
+
+interface Plan {
+  plan: string;
+  price: string | number;
+  description: string;
+  items: any[];
+}
+
+const Pricing: React.FC<PricingProps> = ({ data }) => (
   <div className="columns">
-    {data.map((price) => (
+    {data.map(price => (
       <div key={price.plan} className="column">
         <section className="section">
           <h4 className="has-text-centered has-text-weight-semibold">
@@ -14,7 +24,7 @@ const Pricing = ({ data }) => (
           </h2>
           <p className="has-text-weight-semibold">{price.description}</p>
           <ul>
-            {price.items.map((item) => (
+            {price.items.map(item => (
               <li key={item} className="is-size-5">
                 {item}
               </li>
@@ -24,17 +34,6 @@ const Pricing = ({ data }) => (
       </div>
     ))}
   </div>
-)
+);
 
-Pricing.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      plan: PropTypes.string,
-      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      description: PropTypes.string,
-      items: PropTypes.array,
-    })
-  ),
-}
-
-export default Pricing
+export default Pricing;
