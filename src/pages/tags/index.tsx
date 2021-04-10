@@ -47,7 +47,7 @@ const TagsPage: React.FC<TagsPageProps> = ({
 
 export default TagsPage;
 
-const tagsPageQuery = graphql`
+export const tagsPageQuery = graphql`
   query Tags {
     site {
       siteMetadata {
