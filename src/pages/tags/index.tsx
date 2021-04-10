@@ -1,12 +1,22 @@
 import React from 'react';
 import { kebabCase } from 'lodash';
 import { Helmet } from 'react-helmet';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Layout from '../../components/Layout';
-import { useTags } from './useTags';
+import { TagsQuery } from '../../../graphql-types';
 
-const TagsPage: React.FC = () => {
-  const { group, title } = useTags();
+interface TagsPageProps {
+  data: TagsQuery;
+}
+
+const TagsPage: React.FC<TagsPageProps> = ({
+  data: {
+    allMarkdownRemark: { group },
+    site: {
+      siteMetadata: { title },
+    },
+  },
+}) => {
   return (
     <Layout>
       <section className="section">
@@ -34,4 +44,21 @@ const TagsPage: React.FC = () => {
     </Layout>
   );
 };
+
 export default TagsPage;
+
+const tagsPageQuery = graphql`
+  query Tags {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(limit: 1000) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }
+`;
