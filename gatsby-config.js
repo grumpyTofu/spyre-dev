@@ -89,18 +89,18 @@ module.exports = {
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        documentPaths: [
-          './src/**/*.{ts,tsx}',
-          './.cache/fragments/*.js',
-          './node_modules/gatsby-*/**/*.js',
-          './node_modules/**/fragments.js'
-          //'./gatsby-node.ts',
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-graphql-codegen`,
+    //   options: {
+    //     documentPaths: [
+    //       './src/**/*.{ts,tsx}',
+    //       './.cache/fragments/*.js',
+    //       './node_modules/gatsby-*/**/*.js',
+    //       './node_modules/**/fragments.js'
+    //       //'./gatsby-node.ts',
+    //     ],
+    //   },
+    // },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 };

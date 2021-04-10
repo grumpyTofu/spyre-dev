@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  useTheme,
+  Theme,
+} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,8 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      color: 'black',
     },
     title: {
+      flexGrow: 1,
+    },
+    spacer: {
       flexGrow: 1,
     },
   })
@@ -24,18 +34,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Navbar = () => {
   const classes = useStyles();
-  const [state, setState] = useState({
-    active: false,
-    navbarActiveClass: '',
-  });
+  const theme = useTheme();
 
-  const toggleHamburger = () => {
-    // toggle the active boolean in the state
-    setState({
-      active: !state.active,
-      navbarActiveClass: !state.active ? 'is-active' : '',
-    });
-  };
+  const collapsed = !useMediaQuery(theme.breakpoints.up('md'));
+
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
   return (
     <AppBar position="static" className={classes.appbar} elevation={0}>
@@ -45,38 +49,55 @@ const Navbar = () => {
             Spyre
           </Typography>
         </Link>
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-        <Link className="navbar-item" to="/products">
-          Products
-        </Link>
-        <Link className="navbar-item" to="/blog">
-          Blog
-        </Link>
-        <Link className="navbar-item" to="/contact">
-          Contact
-        </Link>
-        <Link className="navbar-item" to="/contact/examples">
-          Form Examples
-        </Link>
-        <div
-          className={`navbar-burger burger ${state.navbarActiveClass}`}
-          data-target="navMenu"
-        >
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={() => toggleHamburger()}
-          >
-            <MenuIcon />
-          </IconButton>
-        </div>
+        {collapsed ? (
+          <>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={toggleDrawer}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
+            >
+              <Links />
+            </Drawer>
+            <div className={classes.spacer} />
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer}
+            >
+              <MenuIcon />
+            </IconButton>
+          </>
+        ) : (
+          <Links />
+        )}
       </Toolbar>
     </AppBar>
   );
 };
 
 export default Navbar;
+
+const Links = () => (
+  <>
+    <Link className="navbar-item" to="/about">
+      About
+    </Link>
+    <Link className="navbar-item" to="/products">
+      Products
+    </Link>
+    <Link className="navbar-item" to="/blog">
+      Blog
+    </Link>
+    <Link className="navbar-item" to="/contact">
+      Contact
+    </Link>
+    <Link className="navbar-item" to="/contact/examples">
+      Form Examples
+    </Link>
+  </>
+);
