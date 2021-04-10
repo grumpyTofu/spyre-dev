@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import Features from '../components/Features';
 import BlogRoll from '../components/BlogRoll';
 import {
-  IndexPageTemplateQuery,
+  IndexPageQuery,
   MarkdownRemarkFrontmatter,
 } from '../../graphql-types';
 
@@ -125,7 +125,11 @@ export const IndexPageTemplate: React.FC<IndexPageTemplateProps> = ({
   );
 };
 
-const IndexPage: React.FC<{ data: IndexPageTemplateQuery }> = ({
+interface IndexPageProps {
+  data: IndexPageQuery;
+}
+
+const IndexPage: React.FC<IndexPageProps> = ({
   data: {
     markdownRemark: {
       frontmatter
