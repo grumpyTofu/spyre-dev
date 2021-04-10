@@ -1,10 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Spyre Development',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'Welcome to Spyre Development where we seek to optimize your business operations through utilizing modern technologies.',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        // isTSX: true, // defaults to false
+        // jsxPragma: `jsx`, // defaults to "React"
+        // allExtensions: true, // defaults to false
+        // allowJS: true,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
@@ -62,7 +79,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: `${__dirname}/src/cms/cms.ts`,
       },
     },
     {
@@ -72,6 +89,18 @@ module.exports = {
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
+    // {
+    //   resolve: `gatsby-plugin-graphql-codegen`,
+    //   options: {
+    //     documentPaths: [
+    //       './src/**/*.{ts,tsx}',
+    //       './.cache/fragments/*.js',
+    //       './node_modules/gatsby-*/**/*.js',
+    //       './node_modules/**/fragments.js'
+    //       //'./gatsby-node.ts',
+    //     ],
+    //   },
+    // },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};

@@ -1,10 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import React from 'react';
+import { MarkdownRemarkFrontmatterIntroBlurbs } from '../../graphql-types';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
 
-const FeatureGrid = ({ gridItems }) => (
+interface FeaturesProps {
+  gridItems: MarkdownRemarkFrontmatterIntroBlurbs[];
+}
+
+const FeatureGrid: React.FC<FeaturesProps> = ({ gridItems }) => (
   <div className="columns is-multiline">
-    {gridItems.map((item) => (
+    {gridItems.map(item => (
       <div key={item.text} className="column is-6">
         <section className="section">
           <div className="has-text-centered">
@@ -22,15 +26,6 @@ const FeatureGrid = ({ gridItems }) => (
       </div>
     ))}
   </div>
-)
+);
 
-FeatureGrid.propTypes = {
-  gridItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      text: PropTypes.string,
-    })
-  ),
-}
-
-export default FeatureGrid
+export default FeatureGrid;

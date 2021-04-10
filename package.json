@@ -1,12 +1,17 @@
 {
-  "name": "gatsby-starter-netlify-cms",
-  "description": "Example Gatsby, and Netlify CMS project",
-  "version": "1.1.3",
-  "author": "Austin Green",
+  "name": "spyre-dev",
+  "description": "Spyre Development Website",
+  "version": "1.0.0",
+  "author": "Austin Felix",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "bulma": "^0.9.0",
-    "gatsby": "^2.20.35",
-    "gatsby-image": "^2.3.5",
+    "codemirror": "^5.46.0",
+    "gatsby": "2.24.80",
+    "gatsby-image": "^3.2.0",
+    "gatsby-plugin-graphql-codegen": "^2.7.1",
+    "gatsby-plugin-material-ui": "2.x",
     "gatsby-plugin-netlify": "^2.2.4",
     "gatsby-plugin-netlify-cms": "^4.2.5",
     "gatsby-plugin-purgecss": "^5.0.0",
@@ -19,9 +24,13 @@
     "gatsby-source-filesystem": "^2.2.5",
     "gatsby-transformer-remark": "^2.7.5",
     "gatsby-transformer-sharp": "^2.4.7",
+    "immutable": "3.7.6",
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.4",
+    "moment": "^2.24.0",
     "netlify-cms-app": "^2.14.36",
+    "netlify-cms-lib-util": "2.12.3",
+    "netlify-cms-lib-widgets": "^1.6.1",
     "netlify-cms-media-library-cloudinary": "^1.3.10",
     "netlify-cms-media-library-uploadcare": "^0.5.10",
     "node-sass": "^4.14.0",
@@ -29,7 +38,9 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^6.0.0",
-    "uuid": "^7.0.0"
+    "redux": "^3.0.0",
+    "uuid": "^7.0.0",
+    "webpack": "4.4.0"
   },
   "keywords": [
     "gatsby"
@@ -38,13 +49,16 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "npm run develop",
+    "start": "npm run clean && gatsby develop",
     "build": "npm run clean && gatsby build",
-    "develop": "npm run clean && gatsby develop",
+    "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cms": "npx netlify-cms-proxy-server"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "@types/react-helmet": "^6.1.0",
+    "prettier": "^2.0.5",
+    "typescript": "^4.2.4"
   }
 }
