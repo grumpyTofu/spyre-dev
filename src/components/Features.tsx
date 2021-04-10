@@ -1,13 +1,9 @@
 import React from 'react';
+import { MarkdownRemarkFrontmatterIntroBlurbs } from '../../graphql-types';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
 
-interface GridItem {
-  image: string | any; // was PropTypes.object
-  text: string;
-}
-
 interface FeaturesProps {
-  gridItems: GridItem[];
+  gridItems: MarkdownRemarkFrontmatterIntroBlurbs[];
 }
 
 const FeatureGrid: React.FC<FeaturesProps> = ({ gridItems }) => (

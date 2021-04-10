@@ -3,9 +3,11 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import PreviewCompatibleImage from '../PreviewCompatibleImage';
 import { useBlogPosts } from './useBlogPosts';
 
-const BlogRoll: React.FC = () => {
-  const posts = useBlogPosts();
+interface BlogRollProps {
+  posts?: any[];
+}
 
+const BlogRoll: React.FC<BlogRollProps> = ({ posts = useBlogPosts() }) => {
   return (
     <div className="columns is-multiline">
       {posts &&

@@ -1,18 +1,13 @@
 import { useStaticQuery, graphql } from 'gatsby';
-
-interface BlogRollData {
-  allMarkdownRemark: {
-    edges: any[];
-  };
-}
+import { BlogRollQuery } from '../../../graphql-types';
 
 export const useBlogPosts = () => {
-  const data = useStaticQuery<BlogRollData>(BlogRollDataQuery);
+  const data = useStaticQuery<BlogRollQuery>(BlogRollDataQuery);
   return data.allMarkdownRemark.edges;
 };
 
 const BlogRollDataQuery = graphql`
-  query BlogRollQuery {
+  query BlogRoll {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "blog-post" } } }

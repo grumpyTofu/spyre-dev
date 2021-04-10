@@ -18,6 +18,7 @@ const IndexPagePreview: React.FC<PreviewTemplateComponentProps> = ({
         description={data.description}
         intro={data.intro || { blurbs: [] }}
         mainpitch={data.mainpitch || {}}
+        isPreview={true}
       />
     );
   } else {

@@ -1,14 +1,14 @@
 import React from 'react';
 import Img from 'gatsby-image';
+import { MarkdownRemarkFrontmatterIntroBlurbs } from '../../graphql-types';
 
-
+interface ImageInfo extends MarkdownRemarkFrontmatterIntroBlurbs {
+  alt?: string;
+  childImageSharp?: any; // was PropTypes.object
+  style?: any; // was PropTypes.object
+}
 interface PreviewCompatibleImageProps {
-  imageInfo: {
-    alt?: string;
-    childImageSharp?: any; // was PropTypes.object
-    image: string | any; // was PropTypes.object, PropTypes.string
-    style?: any; // was PropTypes.object
-  };
+  imageInfo: ImageInfo;
 }
 
 const PreviewCompatibleImage: React.FC<PreviewCompatibleImageProps> = ({

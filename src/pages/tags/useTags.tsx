@@ -1,23 +1,14 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { TagsQuery } from '../../../graphql-types';
 
-interface TagData {
-  allMarkdownRemark: { 
-      group: string | any;
-    };
-  site: {
-    siteMetadata: { 
-        title: string;
-    };
-  };
-}
 
 export const useTags = () => {
-  const data = useStaticQuery<TagData>(tagPageQuery);
+  const data = useStaticQuery<TagsQuery>(tagsPageQuery);
   return { group: data.allMarkdownRemark.group, title: data.site.siteMetadata.title };
 };
 
-const tagPageQuery = graphql`
-  query TagsQuery {
+const tagsPageQuery = graphql`
+  query Tags {
     site {
       siteMetadata {
         title
