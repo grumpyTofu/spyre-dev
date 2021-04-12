@@ -1,10 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import { AboutPageQuery } from '../../graphql-types';
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+interface AboutPageTemplateProps {
+  title: string;
+  content?: string;
+  contentComponent?: any; // was PropsTypes.func
+}
+
+export const AboutPageTemplate: React.FC<AboutPageTemplateProps> = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content;
 
   return (
@@ -25,13 +31,11 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   );
 };
 
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
-};
+interface AboutPageProps {
+  data: AboutPageQuery;
+}
 
-const AboutPage = ({ data }) => {
+const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
@@ -43,10 +47,6 @@ const AboutPage = ({ data }) => {
       />
     </Layout>
   );
-};
-
-AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
 export default AboutPage;

@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Layout from '../../components/Layout'
 
-export default class Index extends React.Component {
-  render() {
+const Examples = () => {
     return (
       <Layout>
         <section className="section">
@@ -46,5 +45,6 @@ export default class Index extends React.Component {
         </section>
       </Layout>
     )
-  }
 }
+
+export default Examples;
