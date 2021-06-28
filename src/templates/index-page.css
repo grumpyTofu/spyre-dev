@@ -1,0 +1,44 @@
+.canvasWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.canvas {
+  background-color: white;
+}
+
+.scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  z-index: 9999999999;
+}
+
+.htmlWrapper {
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* .hero {
+  background: url('%PUBLIC_URL%/christopher-gower-m_hrflhgabo-unsplash.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+  background-size: cover;
+} */

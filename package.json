@@ -6,7 +6,10 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@react-three/drei": "^7.0.2",
+    "@react-three/fiber": "^7.0.1",
     "bulma": "^0.9.0",
+    "clsx": "^1.1.1",
     "codemirror": "^5.46.0",
     "gatsby": "2.24.80",
     "gatsby-image": "^3.2.0",
@@ -39,6 +42,7 @@
     "react-dom": "^16.8.4",
     "react-helmet": "^6.0.0",
     "redux": "^3.0.0",
+    "three": "^0.129.0",
     "uuid": "^7.0.0",
     "webpack": "4.4.0"
   },
@@ -49,7 +53,7 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "npm run clean && gatsby develop",
+    "start": "npm run clean && gatsby develop -H 0.0.0.0",
     "build": "npm run clean && gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
@@ -58,6 +62,7 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.0",
+    "@types/three": "^0.129.1",
     "prettier": "^2.0.5",
     "typescript": "^4.2.4"
   }
